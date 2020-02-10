@@ -12,11 +12,11 @@ import com.omy.gmedica.model.Paciente;
 
 @Repository
 public interface IConsultaDao extends JpaRepository<Consulta, Long> {
-	/*List<Consulta> findByPacienteId(int idPaciente);
+	/*List<Consulta> findByIdPaciente(int idPaciente);
 
-	List<Consulta> findByEspecialidadId(int idEspecialidad);
+	List<Consulta> findByIdEspecialidad(int idEspecialidad);
 
-	List<Consulta> findByMedicoId(int idMedico);*/
+	List<Consulta> findByIdMedico(int idMedico);*/
 	
 	List<Consulta> findByPaciente(Paciente paciente);
 
