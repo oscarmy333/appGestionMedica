@@ -27,40 +27,40 @@ public class Consulta {
             sequenceName = "consulta_sequence",
             initialValue = 1000
     )
-    private int id;
+    private Long id;
 
-    @Column(columnDefinition = "fecha")
+    @Column(name = "fecha")
     private Date fecha;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_paciente", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    //@JsonIgnore
     private Paciente paciente;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_especialidad", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    //@JsonIgnore
     private Especialidad especialidad;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_medico", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    //@JsonIgnore
     private Medico medico;
 
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

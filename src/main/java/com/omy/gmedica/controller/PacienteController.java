@@ -2,6 +2,8 @@ package com.omy.gmedica.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,6 +32,13 @@ public class PacienteController {
 		List<Paciente> pacientes = service.listar();
 
 		return new ResponseEntity<>(pacientes, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> registrar(@Valid @RequestBody Paciente paciente){
+		service.registrar(paciente);
+		
+		return new ResponseEntity<Object> (HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/actualizar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

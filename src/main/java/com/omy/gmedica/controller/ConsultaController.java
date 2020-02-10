@@ -14,35 +14,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.omy.gmedica.model.Medico;
-import com.omy.gmedica.service.IMedicoService;
+import com.omy.gmedica.model.Consulta;
+import com.omy.gmedica.service.IConsultaService;
 
 @RestController
-@RequestMapping(value = "/api/medicos")
-public class MedicoController {
+@RequestMapping(value = "/api/consultas")
+public class ConsultaController {
 
 	@Autowired
-	private IMedicoService service;
+	private IConsultaService service;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Medico>> listar() {
+	public ResponseEntity<List<Consulta>> listar() {
 
-		List<Medico> medicos = service.listar();
+		List<Consulta> consultas = service.listar();
 
-		return new ResponseEntity<>(medicos, HttpStatus.OK);
+		return new ResponseEntity<>(consultas, HttpStatus.OK);
 	}
-
+	
 	@PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> registrar(@Valid @RequestBody Medico medico){
-		service.registrar(medico);
+	public ResponseEntity<Object> registrar(@Valid @RequestBody Consulta consulta){
+		service.registrar(consulta);
 		
 		return new ResponseEntity<Object> (HttpStatus.OK);
 	}
-	
-	@PostMapping(value = "/actualizar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> actualizar(@RequestBody Medico medico) {
 
-		service.modificar(medico);
+	@PostMapping(value = "/actualizar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> actualizar(@RequestBody Consulta consulta) {
+
+		service.modificar(consulta);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
